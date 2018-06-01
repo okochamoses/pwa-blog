@@ -17,11 +17,22 @@ const PostSchema = new Schema({
     required: true,
     minlength: 2
   },
+  stub: {
+    type: String
+  },
   created_at: {
     type: Date,
     required: true,
     default: Date.now()
   }
+});
+
+// Create stub for Post
+PostSchema.method("add_stub", text => {
+  return text
+    .split(" ")
+    .join("-")
+    .toLowerCase();
 });
 
 const Post = mongoose.model("posts", PostSchema);

@@ -4,7 +4,12 @@ const router = express.Router();
 const Post = require("../models/Post");
 
 router.get("/", (req, res) => {
-  res.render("home.hbs");
+  Post.find()
+    .then(posts => {
+      console.log(posts);
+      res.render("home.hbs", { posts });
+    })
+    .catch(err => console.log(err));
 });
 
 router.get("/post/:post", (req, res) => {
@@ -22,6 +27,8 @@ router.post("/create", (req, res) => {
     body: body.body,
     author: body.author
   });
+
+  post.stub = post.add_stub(body.title);
 
   post
     .save()
