@@ -17,6 +17,16 @@ const PostSchema = new Schema({
     required: true,
     minlength: 2
   },
+  category: {
+    type: String,
+    required: true,
+    default: "Uncategorized"
+  },
+  postImg: {
+    type: String,
+    required: true,
+    default: "/images/default-post.jpg"
+  },
   stub: {
     type: String
   },

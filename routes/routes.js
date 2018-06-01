@@ -5,6 +5,7 @@ const Post = require("../models/Post");
 
 router.get("/", (req, res) => {
   Post.find()
+    .sort({ created_at: "desc" })
     .then(posts => {
       console.log(posts);
       res.render("home.hbs", { posts });
@@ -12,9 +13,11 @@ router.get("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.get("/post/:post", (req, res) => {
-  const post = req.params.post;
-  res.send(post);
+router.get("/post/:stub", (req, res) => {
+  const stub = req.params.stub;
+  Post.findOne({ stub })
+    .then(post => res.render("post.hbs", { post }))
+    .catch(err => console.log(err));
 });
 
 router.get("/create", (req, res) => res.render("create.hbs"));

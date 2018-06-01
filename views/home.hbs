@@ -1,29 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+{{> header }}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <title>Homepage</title>
-</head>
-
-<body style="background-color: #f3f3f3">
-  <div class="container-fluid">
+<section class="site-section pt-5">
+  <div class="container">
     <div class="row">
-      <div class="col-md-10 offset-md-1" style="background-color: #fff">
-        <h1 class="text-center">Blog Posts</h1>
-        {{# each posts}}
-        <h3>
-          <a href="./post/{{this.stub}}">{{this.title}}</a>
-        </h3>
-        <p>{{this.body}}</p>
-        <hr> {{/each}}
+      {{# each posts}}
+      <div class="col-md-6 col-lg-4">
+        <a href="/post/{{this.stub}}" class="a-block d-flex align-items-center height-md" style="background-image: url('{{this.postImg}}'); ">
+          <div class="text">
+            <div class="post-meta">
+              <span class="category">{{this.category}}</span>
+              <br>
+              <span class="mr-2">{{this.created_at}} </span> &bullet;
+              <span class="ml-2">
+                {{!--
+                <span class="fa fa-comments"></span> 3</span> --}}
+            </div>
+            <h3>{{this.title}}</h3>
+          </div>
+        </a>
+      </div>
+      {{/each}}
+      <div class="col-md-6 col-lg-4">
+        <a href="" class="a-block d-flex align-items-center height-md" style="background-image: url('images/img_3.jpg'); ">
+          <div class="text">
+            <div class="post-meta">
+              <span class="category">Travel</span>
+              <span class="mr-2">March 15, 2018 </span> &bullet;
+              <span class="ml-2">
+                <span class="fa fa-comments"></span> 3</span>
+            </div>
+            <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="blog-single.html" class="a-block d-flex align-items-center height-md" style="background-image: url('images/img_4.jpg'); ">
+          <div class="text">
+            <div class="post-meta">
+              <span class="category">Food</span>
+              <span class="mr-2">March 15, 2018 </span> &bullet;
+              <span class="ml-2">
+                <span class="fa fa-comments"></span> 3</span>
+            </div>
+            <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
+          </div>
+        </a>
       </div>
     </div>
   </div>
-</body>
 
-</html>
+
+</section>
+<!-- END section -->
+{{> footer}}

@@ -10,6 +10,11 @@ const app = express();
 // Set templating engine
 app.set("view engine", "hbs");
 
+hbs.registerPartials(__dirname + "/views/partials");
+
+// Set static file directory
+app.use(express.static(`${__dirname}/public`));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
