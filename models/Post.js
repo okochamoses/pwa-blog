@@ -1,3 +1,4 @@
+const moment = require("moment");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -43,6 +44,11 @@ PostSchema.method("add_stub", text => {
     .split(" ")
     .join("-")
     .toLowerCase();
+});
+
+// Return formated date
+PostSchema.method("format_date", date => {
+  return moment(date).format("lll");
 });
 
 const Post = mongoose.model("posts", PostSchema);
